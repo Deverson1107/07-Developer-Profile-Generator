@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const PDFDocument = require("pdfkit");
 const util = require("util");
 const axios = require("axios");
 var pdf = require('html-pdf');
@@ -20,7 +19,7 @@ function promptuser() {
     .then(function(result) {
         const stats = {
             "name" : result.data.name,
-            "pageURL" : result.data.url,
+            "pageURL" : result.data.html_url,
             "location" : result.data.location,
             "followers" : result.data.followers,
             "following" : result.data.following,
@@ -51,11 +50,11 @@ function generateHTML(stats) {
   <title>Github Profile Info</title>
 </head>
 <body>
-  <img src="${stats.imgURL}" height="42" width="42">
+  <img src="${stats.imgURL}" height="300" width="300">
   <h1>${stats.name}</h1>
-  <h2>${stats.bio}</h2>
+  <h5>${stats.bio}</h5>
   <a href="${stats.pageURL}">Github Page</a>
-  <div>${stats.location}</div>
+  <div>Location: ${stats.location}</div>
   <h4>Repositories: ${stats.repocount}</h4>
   <h4>Following: ${stats.following}</h4>
   <h4>Followers: ${stats.followers}</h4>
@@ -63,4 +62,4 @@ function generateHTML(stats) {
 </html>`;
 }
 
-promptuser()
+promptuser();
