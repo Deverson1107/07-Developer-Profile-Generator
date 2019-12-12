@@ -54,7 +54,7 @@ function generateHTML(stats) {
   <h1>${stats.name}</h1>
   <h5>${stats.bio}</h5>
   <a href="${stats.pageURL}">Github Page</a>
-  <div>Location: ${stats.location}</div>
+  <a href="https://www.google.com/maps/place/${stats.location}">Location: ${stats.location}</a>
   <h4>Repositories: ${stats.repocount}</h4>
   <h4>Following: ${stats.following}</h4>
   <h4>Followers: ${stats.followers}</h4>
